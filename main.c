@@ -1,10 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menu()
+void printaMenuPrincipal();
+int pegarOpcao();
+void opcaoMenuPrincpal();
+void conversorTempo();
+
+// Função principal
+int main()
+{
+    printaMenuPrincipal();          // Mostrar menu
+    opcaoMenuPrincpal();     // Escolha da função do menu
+    return 0;
+}
+
+void printaMenuPrincipal()
 {
     printf("\n       Digite um Número Para Escolher a Opção\n");
-     printf("\n***********************************************************************************************\n");
+    printf("\n***********************************************************************************************\n");
     printf("| 1 | Converter Unidades de comprimento (metro, centímetro, milímetro)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 2 | Converter Unidades de massa (quilograma, grama, tonelada)\n");
@@ -19,7 +32,7 @@ void menu()
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 7 | Converter Unidades de área (metro quadrado, centímetro quadrado)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 8 | Converter Unidades de Unidades de tempo (segundos, minutos, horas)\n");
+    printf("| 8 | Converter Unidades de tempo (segundos, minutos, horas)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 9 | Converter Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
@@ -28,7 +41,7 @@ void menu()
 }
 
 // Função para validar a entrada do usuário
-int validarEntrada()
+int pegarOpcao()
 {
     int opcao = 0;
 
@@ -37,7 +50,7 @@ int validarEntrada()
     while (scanf("%d", &opcao) != 1) // Verificar se é um número inteiro
     {
         system("clear || cls"); // Limpa o terminal
-        menu();
+        printaMenuPrincipal();
         printf("Erro!! \nDigite um número\n--> ");
         while (getchar() != '\n'); // Limpar buffer do teclado
     }
@@ -46,81 +59,118 @@ int validarEntrada()
 }
 
 // Função para entrar na opção escolhida
-void opcaoMenu()
+void opcaoMenuPrincpal()
 {
     int opcao;
-    int valido = 0;
 
-    do
-    {
-        opcao = validarEntrada();
+    do {
+        printaMenuPrincipal();
+        opcao = pegarOpcao();
 
-        if (opcao < 0 || opcao > 9)
-        {
-            system("clear || cls"); // Limpa o terminal
-            menu();                 // Mostra o menu novamente
-            printf("Opção inválida. Digite outro número.\n");
+        switch (opcao) {
+            case 1:
+                printf("Conversor de comprimento ainda não implementado.\n");
+                break;
+
+            case 2:
+                printf("Conversor de massa ainda não implementado.\n");
+                break;
+
+            case 3:
+                printf("Conversor de volume ainda não implementado.\n");
+                break;
+
+            case 4:
+                printf("Conversor de temperatura ainda não implementado.\n");
+                break;
+
+            case 5:
+                printf("Conversor de velocidade ainda não implementado.\n");
+                break;
+
+            case 6:
+                printf("Conversor de potência ainda não implementado.\n");
+                break;
+
+            case 7:
+                printf("Conversor de área ainda não implementado.\n");
+                break;
+
+            case 8:
+                system("clear || cls"); // Limpa o terminal
+                conversorTempo();
+                break;
+
+            case 9:
+                printf("Conversor de dados ainda não implementado.\n");
+                break;
+
+            default:
+                printf("\nOpção inválida\n");
+                break;
         }
-        else
-            valido = 1;
+    } while (opcao != 0);
 
-    } while (valido != 1);
-
-    switch (opcao)
-    {
-    case 1:
-        printf("Conversor de comprimento ainda não implementado.\n");
-        break;
-
-    case 2:
-        printf("Conversor de massa ainda não implementado.\n");
-        break;
-
-    case 3:
-        printf("Conversor de volume ainda não implementado.\n");
-        break;
-
-    case 4:
-        printf("Conversor de temperatura ainda não implementado.\n");
-        break;
-
-    case 5:
-        printf("Conversor de velocidade ainda não implementado.\n");
-        break;
-
-    case 6:
-        printf("Conversor de potência ainda não implementado.\n");
-        break;
-
-    case 7:
-        printf("Conversor de área ainda não implementado.\n");
-        break;
-
-    case 8:
-        printf("Conversor de tempo ainda não implementado.\n");
-        break;
-
-    case 9:
-        printf("Conversor de dados ainda não implementado.\n");
-        break;
-
-    case 0:
-        system("clear || cls"); // Limpa o terminal
-        printf("\n******************\n");
-        printf("\nFim do Programa\n");
-        printf("\n******************\n");
-        break;
-
-    default:
-        printf("\nOpção inválida\n");
-        break;
-    }
+    printf("\n******************\n");
+    printf("\nFim do Programa\n");
+    printf("\n******************\n");
 }
 
-// Função principal
-int main()
-{
-    menu();          // Mostrar menu
-    opcaoMenu();     // Escolha da função do menu
-    return 0;
+void conversorTempo() {
+    int opcao, tempo;
+
+    do {
+        printf("\n       Digite um Número Para Escolher a Opção\n");
+        printf("\n***********************************************************************************************\n");
+        printf("| 1 | Converter segundos para minutos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 2 | Converter segundos para horas\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 3 | Converter minutos para segundos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 4 | Converter minutos para horas\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 5 | Converter horas para segundos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 6 | Converter horas para minutos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 0 | Sair\n");
+        printf("\n***********************************************************************************************\n");
+
+        opcao = pegarOpcao();
+
+        switch (opcao)
+        {
+        case 1:
+            //system("clear || cls");
+            printf("Digite o tempo em segundos: ");
+            scanf("%d", &tempo);
+
+            printf("%d segundos é igual a %d minutos\n", tempo, tempo / 60);
+            break;
+        case 2:
+            /* code */
+            break;
+        case 3:
+            /* code */
+            break;
+        case 4:
+            /* code */
+            break;
+        case 5:
+            /* code */
+            break;
+        case 6:
+            /* code */
+            break;
+        case 0:
+            printf("Entrou aqui");
+            //system("clear || cls");
+            printf("\n******************\n");
+            return;
+            break;
+        default:
+            break;
+        }
+    } while (opcao != 0);
 }
