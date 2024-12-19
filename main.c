@@ -182,7 +182,12 @@ void conversorTempo() {
             system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 6:
-            /* code */
+            system("clear || cls");
+            printf("Digite o tempo em horas: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d horas é igual a %d minutos\n\n", tempo, tempo * 60);
+            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 0:
             printf("Entrou aqui");
