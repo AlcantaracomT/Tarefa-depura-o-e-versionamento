@@ -19,6 +19,8 @@ void menu()
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 7 | Converter Unidades de área (metro quadrado, centímetro quadrado)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 8 | Converter Unidades de Unidades de tempo (segundos, minutos, horas)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 9 | Converter Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 0 | Sair\n");
@@ -31,7 +33,7 @@ int validarEntrada()
     int opcao = 0;
 
     printf("\n--> ");
-    
+
     while (scanf("%d", &opcao) != 1) // Verificar se é um número inteiro
     {
         system("clear || cls"); // Limpa o terminal
@@ -52,7 +54,7 @@ void opcaoMenu()
     do
     {
         opcao = validarEntrada();
-        
+
         if (opcao < 0 || opcao > 9)
         {
             system("clear || cls"); // Limpa o terminal
