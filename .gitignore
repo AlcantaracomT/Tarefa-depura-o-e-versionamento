@@ -4,6 +4,7 @@
 
 **/.vscode
 **.exe
+**/output
 
 ### C ###
 # Prerequisites
