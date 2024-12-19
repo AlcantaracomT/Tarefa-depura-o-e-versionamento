@@ -3,14 +3,14 @@
 
 void printaMenuPrincipal();
 int pegarOpcao();
-void opcaoMenuPrincpal();
+void escolherOpcaoMenuPrincpal();
 void conversorTempo();
 
 // Função principal
 int main()
 {
     printaMenuPrincipal();          // Mostrar menu
-    opcaoMenuPrincpal();     // Escolha da função do menu
+    escolherOpcaoMenuPrincpal();     // Escolha da função do menu
     return 0;
 }
 
@@ -59,7 +59,7 @@ int pegarOpcao()
 }
 
 // Função para entrar na opção escolhida
-void opcaoMenuPrincpal()
+void escolherOpcaoMenuPrincpal()
 {
     int opcao;
 
@@ -189,13 +189,8 @@ void conversorTempo() {
             printf("\n%d horas é igual a %d minutos\n\n", tempo, tempo * 60);
             system("read -p 'Pressione Enter para continuar...' var");
             break;
-        case 0:
-            printf("Entrou aqui");
-            //system("clear || cls");
-            printf("\n******************\n");
-            return;
-            break;
         default:
+            printf("\nOpção inválida\n");
             break;
         }
     } while (opcao != 0);
