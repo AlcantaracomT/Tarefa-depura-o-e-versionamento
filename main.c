@@ -76,8 +76,11 @@ void menu()
     printf("\n***********************************************************************************************\n");
 }
 
-// Função para validar a entrada do usuário
-int validarEntrada()
+
+/* Função para validar a entrada de inteiros do usuário
+   recebe uma entrada e valida caso seja um numero inteiro
+*/
+int validarInteiro()
 {
     int opcao = 0;
 
@@ -94,6 +97,34 @@ int validarEntrada()
     return opcao;
 }
 
+
+/* Função para validar a entrada de caracteres do usuário
+    recebe uma entrada e valida caso seja um caracter alfabetico.
+*/
+char validarCaracter()
+{
+    char input;
+
+    printf("\n--> ");
+
+    while (getchar() != '\n');  // Limpa o buffer
+
+    scanf("%c", &input);
+
+    // Verificar se o caractere esta entra (a-z ou A-Z)
+    if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
+    {
+        return input;
+    } 
+    else 
+    {
+        printf("Erro!! \nDigite\n--> ");
+        return validarCaracter();  
+    }
+}
+// OBS: se for usar as funções validaInteiro e validaCaracter, coloque suas funções daqui para bauo
+
+
 // Função para entrar na opção escolhida
 void opcaoMenu()
 {
@@ -102,7 +133,7 @@ void opcaoMenu()
 
     do
     {
-        opcao = validarEntrada();
+        opcao = validarInteiro();
 
         if (opcao < 0 || opcao > 9)
         {
@@ -118,8 +149,8 @@ void opcaoMenu()
     switch (opcao)
     {
     case 1:
-        converterComprimento()
         system("clear || cls");
+        converterComprimento();
         break;
 
     case 2:
