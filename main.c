@@ -1,59 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void converterComprimento() {
-    double valor, resultado = 0.0;
-    char unidadeOrigem, unidadeDestino;
+// Protótipos das funções
+void menu();
+int validarEntrada();
+void opcaoMenu();
+void conversorArea();
 
-    
-    printf("Digite o valor: ");
-    scanf("%lf", &valor);
-
-    printf("Digite a unidade de origem (m, cm, mm): ");
-    scanf(" %c", &unidadeOrigem);
-
-    printf("Digite a unidade de destino (m, cm, mm): ");
-    scanf(" %c", &unidadeDestino);
-
-    
-    if (unidadeOrigem == 'm') {
-        if (unidadeDestino == 'cm') {
-            resultado = valor * 100;  
-        } else if (unidadeDestino == 'mm') {
-            resultado = valor * 1000; 
-        } else if (unidadeDestino == 'm') {
-            resultado = valor; 
-        }
-    } else if (unidadeOrigem == 'cm') {
-        if (unidadeDestino == 'm') {
-            resultado = valor / 100;  
-        } else if (unidadeDestino == 'mm') {
-            resultado = valor * 10;   
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor; 
-        }
-    } else if (unidadeOrigem == 'mm') {
-        if (unidadeDestino == 'm') {
-            resultado = valor / 1000;
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor / 10;   
-        } else if (unidadeDestino == 'mm') {
-            resultado = valor; 
-        }
-    } else {
-        printf("Unidade de origem inválida!\n");
-        return;
-    }
-
-    // Exibição do resultado
-    printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
+// Função principal
+int main()
+{
+    menu();          // Mostrar menu
+    opcaoMenu();     // Escolha da função do menu
+    return 0;
 }
 
-
+// Função para exibir o menu
 void menu()
 {
     printf("\n       Digite um Número Para Escolher a Opção\n");
-     printf("\n***********************************************************************************************\n");
+    printf("\n***********************************************************************************************\n");
     printf("| 1 | Converter Unidades de comprimento (metro, centímetro, milímetro)\n");
     printf("--------------------------------------------------------------------------------------------------\n");
     printf("| 2 | Converter Unidades de massa (quilograma, grama, tonelada)\n");
@@ -76,11 +42,8 @@ void menu()
     printf("\n***********************************************************************************************\n");
 }
 
-
-/* Função para validar a entrada de inteiros do usuário
-   recebe uma entrada e valida caso seja um numero inteiro
-*/
-int validarInteiro()
+// Função para validar a entrada do usuário
+int validarEntrada()
 {
     int opcao = 0;
 
@@ -97,35 +60,7 @@ int validarInteiro()
     return opcao;
 }
 
-
-/* Função para validar a entrada de caracteres do usuário
-    recebe uma entrada e valida caso seja um caracter alfabetico.
-*/
-char validarCaracter()
-{
-    char input;
-
-    printf("\n--> ");
-
-    while (getchar() != '\n');  // Limpa o buffer
-
-    scanf("%c", &input);
-
-    // Verificar se o caractere esta entra (a-z ou A-Z)
-    if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
-    {
-        return input;
-    } 
-    else 
-    {
-        printf("Erro!! \nDigite\n--> ");
-        return validarCaracter();  
-    }
-}
-// OBS: se for usar as funções validaInteiro e validaCaracter, coloque suas funções daqui para bauo
-
-
-// Função para entrar na opção escolhida
+// Função para tratar a entrada do menu
 void opcaoMenu()
 {
     int opcao;
@@ -133,7 +68,7 @@ void opcaoMenu()
 
     do
     {
-        opcao = validarInteiro();
+        opcao = validarEntrada();
 
         if (opcao < 0 || opcao > 9)
         {
@@ -149,8 +84,7 @@ void opcaoMenu()
     switch (opcao)
     {
     case 1:
-        system("clear || cls");
-        converterComprimento();
+        printf("Conversor de comprimento ainda não implementado.\n");
         break;
 
     case 2:
@@ -174,7 +108,7 @@ void opcaoMenu()
         break;
 
     case 7:
-        printf("Conversor de área ainda não implementado.\n");
+        conversorArea(); // Chama a função de conversão de área
         break;
 
     case 8:
@@ -198,10 +132,40 @@ void opcaoMenu()
     }
 }
 
-// Função principal
-int main()
+// Função para conversão de área
+void conversorArea()
 {
-    menu();          // Mostrar menu
-    opcaoMenu();     // Escolha da função do menu
-    return 0;
+    float metrosQuadrados, centimetrosQuadrados;
+    int escolha;
+
+    printf("\n--- Conversor de Unidades de Área ---\n");
+    printf("Escolha a conversão:\n");
+    printf("1 - Metros quadrados para centímetros quadrados\n");
+    printf("2 - Centímetros quadrados para metros quadrados\n");
+    printf("--> ");
+
+    while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
+    {
+        printf("Opção inválida. Tente novamente:\n--> ");
+        while (getchar() != '\n'); // Limpar buffer
+    }
+
+    if (escolha == 1)
+    {
+        printf("Digite o valor em metros quadrados: ");
+        scanf("%f", &metrosQuadrados);
+        centimetrosQuadrados = metrosQuadrados * 10000;
+        printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
+    }
+    else if (escolha == 2)
+    {
+        printf("Digite o valor em centímetros quadrados: ");
+        scanf("%f", &centimetrosQuadrados);
+        metrosQuadrados = centimetrosQuadrados / 10000;
+        printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
+    }
+
+    printf("\nPressione Enter para continuar...");
+    while (getchar() != '\n');
+    getchar();
 }
