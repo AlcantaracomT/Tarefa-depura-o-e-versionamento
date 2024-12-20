@@ -45,10 +45,103 @@ void converterComprimento() {
         return;
     }
 
-    // Exibição do resultado
+     //Exibição do resultado
     printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
+void limparBuffer() {
+    while (getchar() != '\n'); // Limpar o buffer de entrada
+}
 
+//ConverterVolume
+void converterVolume() {
+    float valor, resultado;
+    int opcaoOrigem, opcaoDestino;
+    char continuar;
+
+    do {
+        // Solicitar a unidade de origem para volume com validação
+        do {
+            printf("\nEscolha a unidade de origem para volume:\n");
+            printf("1 - Litro\n");
+            printf("2 - Mililitro\n");
+            printf("3 - Metro Cúbico\n");
+            printf("Digite a opção da unidade de origem: ");
+            if (scanf("%d", &opcaoOrigem) != 1) {
+                printf("Opção inválida. Por favor, escolha uma opção válida (1, 2 ou 3).\n");
+                limparBuffer(); // Limpar o buffer para evitar loop infinito
+            } else if (opcaoOrigem < 1 || opcaoOrigem > 3) {
+                printf("Opção inválida. Por favor, escolha uma opção válida (1, 2 ou 3).\n");
+            }
+        } while (opcaoOrigem < 1 || opcaoOrigem > 3);
+
+        // Solicitar o valor a ser convertido com validação
+        do {
+            printf("Digite o valor a ser convertido: ");
+            if (scanf("%f", &valor) != 1) {
+                printf("Valor inválido. Por favor, digite um número válido.\n");
+                limparBuffer(); // Limpar o buffer para evitar loop infinito
+            } else {
+                break; // Sai do loop se o valor for válido
+            }
+        } while (1);
+
+        // Solicitar a unidade de destino com validação
+        do {
+            printf("Escolha a unidade de destino:\n");
+            printf("1 - Litro\n");
+            printf("2 - Mililitro\n");
+            printf("3 - Metro Cúbico\n");
+            printf("Digite a opção da unidade de destino: ");
+            if (scanf("%d", &opcaoDestino) != 1) {
+                printf("Opção inválida. Por favor, escolha uma opção válida (1, 2 ou 3).\n");
+                limparBuffer(); // Limpar o buffer para evitar loop infinito
+            } else if (opcaoDestino < 1 || opcaoDestino > 3) {
+                printf("Opção inválida. Por favor, escolha uma opção válida (1, 2 ou 3).\n");
+            }
+        } while (opcaoDestino < 1 || opcaoDestino > 3);
+
+        // Conversão de Volume
+        if (opcaoOrigem == 1) {
+            if (opcaoDestino == 1) {
+                resultado = valor;
+            } else if (opcaoDestino == 2) {
+                resultado = valor * 1000;  // 1 litro = 1000 mililitros
+            } else if (opcaoDestino == 3) {
+                resultado = valor / 1000;  // 1 litro = 0.001 metro cúbico
+            }
+        } else if (opcaoOrigem == 2) {
+            if (opcaoDestino == 1) {
+                resultado = valor / 1000;  // 1000 mililitros = 1 litro
+            } else if (opcaoDestino == 2) {
+                resultado = valor;
+            } else if (opcaoDestino == 3) {
+                resultado = valor * 1e-6;  // 1 mililitro = 1e-6 metro cúbico
+            }
+        } else if (opcaoOrigem == 3) {
+            if (opcaoDestino == 1) {
+                resultado = valor * 1000;  // 1 metro cúbico = 1000 litros
+            } else if (opcaoDestino == 2) {
+                resultado = valor * 1e+6;  // 1 metro cúbico = 1000000 mililitros
+            } else if (opcaoDestino == 3) {
+                resultado = valor;
+            }
+        }
+
+        // Exibir o resultado
+        printf("Resultado: %.6f\n", resultado);  // Mostrar até 6 casas decimais para maior precisão
+
+    
+        // Perguntar se o usuário quer realizar outra conversão com validação de resposta
+        do {
+            printf("\nDeseja realizar outra conversão de volume? (s - sim, n - não): ");
+            scanf(" %c", &continuar);  // O espaço antes de %c é para limpar o buffer do teclado
+            if (continuar != 's' && continuar != 'S' && continuar != 'n' && continuar != 'N') {
+                printf("Opção inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
+            }
+        } while (continuar != 's' && continuar != 'S' && continuar != 'n' && continuar != 'N');  // Validar entrada
+
+    } while (continuar == 's' || continuar == 'S');  // Se o usuário escolher 's' ou 'S', o loop continua
+}
 
 void menu()
 {
@@ -156,9 +249,9 @@ void opcaoMenu()
     case 2:
         printf("Conversor de massa ainda não implementado.\n");
         break;
-
     case 3:
-        printf("Conversor de volume ainda não implementado.\n");
+        system("clear || cls");
+        converterVolume();
         break;
 
     case 4:
