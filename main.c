@@ -1,53 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+
+int validarUnidade(char unidade) {
+    unidade = tolower(unidade); 
+    return (unidade == 'm' || unidade == 'c' || unidade == 'd'); 
+}
+
 
 void converterComprimento() {
     double valor, resultado = 0.0;
     char unidadeOrigem, unidadeDestino;
 
-    
+   
     printf("Digite o valor: ");
     scanf("%lf", &valor);
 
-    printf("Digite a unidade de origem (m, cm, mm): ");
-    scanf(" %c", &unidadeOrigem);
+    
+    do {
+        printf("Digite a unidade de origem (m, cm, mm): ");
+        scanf(" %c", &unidadeOrigem);
+        if (!validarUnidade(unidadeOrigem)) {
+            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+        }
+    } while (!validarUnidade(unidadeOrigem));
 
-    printf("Digite a unidade de destino (m, cm, mm): ");
-    scanf(" %c", &unidadeDestino);
+    
+    do {
+        printf("Digite a unidade de destino (m, cm, mm): ");
+        scanf(" %c", &unidadeDestino);
+        if (!validarUnidade(unidadeDestino)) {
+            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+        }
+    } while (!validarUnidade(unidadeDestino));
 
     
     if (unidadeOrigem == 'm') {
         if (unidadeDestino == 'cm') {
-            resultado = valor * 100;  
+            resultado = valor * 100;
         } else if (unidadeDestino == 'mm') {
-            resultado = valor * 1000; 
-        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000;
+        } else {
             resultado = valor; 
         }
-    } else if (unidadeOrigem == 'cm') {
+    } else if (unidadeOrigem == 'c') {
         if (unidadeDestino == 'm') {
-            resultado = valor / 100;  
+            resultado = valor / 100;
         } else if (unidadeDestino == 'mm') {
-            resultado = valor * 10;   
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor; 
+            resultado = valor * 10;
+        } else {
+            resultado = valor;
         }
-    } else if (unidadeOrigem == 'mm') {
+    } else if (unidadeOrigem == 'd') {
         if (unidadeDestino == 'm') {
             resultado = valor / 1000;
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor / 10;   
-        } else if (unidadeDestino == 'mm') {
+        } else if (unidadeDestino == 'c') {
+            resultado = valor / 10;
+        } else {
             resultado = valor; 
         }
-    } else {
-        printf("Unidade de origem inválida!\n");
-        return;
     }
 
-    // Exibição do resultado
     printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
+
+int main() {
+    converterComprimento();
+    return 0;
+}
+
 
 
 void menu()
@@ -106,8 +128,8 @@ void opcaoMenu()
 
         if (opcao < 0 || opcao > 9)
         {
-            system("clear || cls"); // Limpa o terminal
-            menu();                 // Mostra o menu novamente
+            system("clear || cls"); 
+            menu();                 
             printf("Opção inválida. Digite outro número.\n");
         }
         else
@@ -118,7 +140,7 @@ void opcaoMenu()
     switch (opcao)
     {
     case 1:
-        converterComprimento()
+        converterComprimento();
         system("clear || cls");
         break;
 
