@@ -1,54 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void converterComprimento() {
-    double valor, resultado = 0.0;
-    char unidadeOrigem, unidadeDestino;
-
-    
-    printf("Digite o valor: ");
-     scanf("%lf", &valor);
-
-    printf("Digite a unidade de origem (m, cm, mm): ");
-     scanf(" %c", &unidadeOrigem);
-
-   printf("Digite a unidade de destino (m, cm, mm): ");
-   scanf(" %c", &unidadeDestino);
-
-    
-    if (unidadeOrigem == 'm') {
-       if (unidadeDestino == 'cm') {
-           resultado = valor * 100;  
-       } else if (unidadeDestino == 'mm') {
-          resultado = valor * 1000; 
-       } else if (unidadeDestino == 'm') {
-            resultado = valor; 
-       }
-    } else if (unidadeOrigem == 'cm') {
-       if (unidadeDestino == 'm') {
-           resultado = valor / 100;  
-       } else if (unidadeDestino == 'mm') {
-           resultado = valor * 10;   
-       } else if (unidadeDestino == 'cm') {
-           resultado = valor; 
-       }
-    } else if (unidadeOrigem == 'mm') {
-        if (unidadeDestino == 'm') {
-            resultado = valor / 1000;
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor / 10;   
-        } else if (unidadeDestino == 'mm') {
-            resultado = valor; 
-        }
-    } else {
-        printf("Unidade de origem inválida!\n");
-        return;
-    }
-
-     //Exibição do resultado
-    printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
-}
-
 // Função para converter volume
 void converterVolume() {
     float valor, resultado;
@@ -180,8 +132,7 @@ void opcaoMenu()
     switch (opcao)
     {
     case 1:
-        converterComprimento();
-      //system("clear || cls");
+       printf("Conversor de massa ainda não implementado.\n");
         break;
 
     case 2:
