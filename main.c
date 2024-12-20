@@ -72,7 +72,7 @@ void converterMassa() {
         } else if (unidadeDestino == 't') {
             resultado = valor; // t para t
         } else {
-            printf("Unidade de origem invalida!\n");
+            printf("Unidade fornecida invalida!\n");
             return;
         }
     } else if (unidadeOrigem == 'k') { // Origem: quilograma
@@ -85,7 +85,7 @@ void converterMassa() {
         } else if (unidadeDestino == 'k') {
             resultado = valor; // kg para kg
         } else {
-            printf("Unidade de origem invalida!\n");
+            printf("Unidade fornecida invalida!\n");
             return;
         }
     } else if (unidadeOrigem == 'g') { // Origem: gramas
@@ -98,7 +98,7 @@ void converterMassa() {
         } else if (unidadeDestino == 'g') {
             resultado = valor; // g para g
         } else {
-            printf("Unidade de origem invalida!\n");
+            printf("Unidade fornecida invalida!\n");
             return;
         }
     } else if (unidadeOrigem == 'm') { // Origem: miligrama
@@ -111,11 +111,11 @@ void converterMassa() {
         } else if (unidadeDestino == 'm') {
             resultado = valor; // mg para mg
         } else {
-            printf("Unidade de origem invalida!\n");
+            printf("Unidade fornecida invalida!\n");
             return;
         }
     } else {
-        printf("Unidade de origem invalida!\n");
+        printf("Unidade fornecida invalida!\n");
         return;
     }
 
