@@ -144,6 +144,80 @@ void converterVolume() {
 
     } while (continuar == 's' || continuar == 'S');  // Se o usuário escolher 's' ou 'S', o loop continua
 }
+void converterMassa() {
+    double valor, resultado = 0.0;
+    char unidadeOrigem, unidadeDestino;
+
+    printf("Digite o valor: ");
+    scanf("%lf", &valor);
+
+    printf("Digite a unidade de origem (t para toneladas, k para quilogramas, g para gramas, m para miligramas): ");
+    scanf(" %c", &unidadeOrigem);
+
+    printf("Digite a unidade de destino (t para toneladas, k para quilogramas, g para gramas, m para miligramas): ");
+    scanf(" %c", &unidadeDestino);
+
+    if (unidadeOrigem == 't') { // Origem: toneladas
+        if (unidadeDestino == 'k') {
+            resultado = valor * 1000; // t para kg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor * 1000000; // t para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000000000; // t para mg
+        } else if (unidadeDestino == 't') {
+            resultado = valor; // t para t
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'k') { // Origem: quilograma
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000; // kg para t
+        } else if (unidadeDestino == 'g') {
+            resultado = valor * 1000; // kg para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000000; // kg para mg
+        } else if (unidadeDestino == 'k') {
+            resultado = valor; // kg para kg
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'g') { // Origem: gramas
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000000; // g para t
+        } else if (unidadeDestino == 'k') {
+            resultado = valor / 1000; // g para kg
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000; // g para mg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor; // g para g
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'm') { // Origem: miligrama
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000000000; // mg para t
+        } else if (unidadeDestino == 'k') {
+            resultado = valor / 1000000; // mg para kg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor / 1000; // mg para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor; // mg para mg
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else {
+        printf("Unidade fornecida invalida!\n");
+        return;
+    }
+
+    // Exibi\u00e7\u00e3o do resultado
+    printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
+}
+
 
 void menu()
 {
@@ -249,7 +323,8 @@ void opcaoMenu()
         break;
 
     case 2:
-        printf("Conversor de massa ainda não implementado.\n");
+        system("clear || cls");
+        converterMassa();        
         break;
     case 3:
         system("clear || cls");
