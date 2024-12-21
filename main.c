@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void conversorArea();
+
 void converterComprimento() {
     double valor, resultado = 0.0;
     char unidadeOrigem, unidadeDestino;
@@ -267,7 +269,7 @@ void opcaoMenu()
         break;
 
     case 7:
-        printf("Conversor de área ainda não implementado.\n");
+        conversorArea(); // Chama a função de conversão de área
         break;
 
     case 8:
@@ -297,4 +299,42 @@ int main()
     menu();          // Mostrar menu
     opcaoMenu();     // Escolha da função do menu
     return 0;
+}
+
+// Função para conversão de área
+void conversorArea()
+{
+    float metrosQuadrados, centimetrosQuadrados;
+    int escolha;
+
+    printf("\n--- Conversor de Unidades de Área ---\n");
+    printf("Escolha a conversão:\n");
+    printf("1 - Metros quadrados para centímetros quadrados\n");
+    printf("2 - Centímetros quadrados para metros quadrados\n");
+    printf("--> ");
+
+    while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
+    {
+        printf("Opção inválida. Tente novamente:\n--> ");
+        while (getchar() != '\n'); // Limpar buffer
+    }
+
+    if (escolha == 1)
+    {
+        printf("Digite o valor em metros quadrados: ");
+        scanf("%f", &metrosQuadrados);
+        centimetrosQuadrados = metrosQuadrados * 10000;
+        printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
+    }
+    else if (escolha == 2)
+    {
+        printf("Digite o valor em centímetros quadrados: ");
+        scanf("%f", &centimetrosQuadrados);
+        metrosQuadrados = centimetrosQuadrados / 10000;
+        printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
+    }
+
+    printf("\nPressione Enter para continuar...");
+    while (getchar() != '\n');
+    getchar();
 }
