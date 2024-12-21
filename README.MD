@@ -35,11 +35,13 @@ O programa inclui as seguintes conversões:
 ## 💻 Desenvolvimento
 
 ### Configuração Inicial
+
 1. Criar conta no GitHub
 2. Configurar Git no VSCode (nome, e-mail)
 3. Clonar o repositório
 
 ### Fluxo de Trabalho
+
 1. Criar branch para sua feature (ex: feature/comprimento)
 2. Desenvolver a funcionalidade designada
 3. Fazer commits regulares com mensagens descritivas
@@ -47,6 +49,7 @@ O programa inclui as seguintes conversões:
 5. Aguardar revisão do líder
 
 ### Boas Práticas
+
 - Manter código documentado
 - Seguir padrões de codificação
 - Testar funcionalidades antes do commit
@@ -85,7 +88,15 @@ Membros da equipe de desenvolvimento do projeto:
         <p>Desenvolvedora em Sistemas Embarcados e IoT</p>
       </a>
     </td>
-  </tr>
+
+   <td align="center">
+      <a href="https://github.com/davi-aguiar">
+        <img src="https://github.com/davi-aguiar.png" width="100px;" alt="Foto do Davi no GitHub"/><br>
+        <b>Davi Aguiar</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
+      </tr>
 </table>
 
 [⬆ Voltar ao topo](#topo)
