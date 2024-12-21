@@ -79,6 +79,16 @@ Membros da equipe de desenvolvimento do projeto:
 <table>
   <tr>
     <td align="center">
+<<<<<<< HEAD
+=======
+      <a href="https://github.com/matheusssilva991">
+        <img src="https://github.com/matheusssilva991.png " width="100px;" alt="Foto de Matheus Santos silva no GitHub"/><br>
+        <b>Matheus Santos Silva (matheusssilva991)</b>
+        <p>Desenvolvedor Back-end - NestJS</p>
+      </a>
+    </td>
+    <td align="center">
+>>>>>>> tempoM
       <a href="https://github.com/suianialmeida">
         <img src="https://github.com/suianialmeida.png " width="100px;" alt="Foto de Suiani Almeida no GitHub"/><br>
         <b>Suiani Almeida</b>
