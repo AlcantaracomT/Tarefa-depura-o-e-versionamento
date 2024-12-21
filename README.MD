@@ -70,7 +70,7 @@ O programa inclui as seguintes conversões:
 
 Em desenvolvimento
 
----
+-----
 
 ## 🤝 Equipe
 
