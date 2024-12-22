@@ -1,50 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+
+int validarUnidade(char unidade) {
+    unidade = tolower(unidade); 
+    return (unidade == 'm' || unidade == 'c' || unidade == 'd'); 
+}
+
 
 void conversorArea();
+void conversorTempo();
 
 void converterComprimento() {
     double valor, resultado = 0.0;
     char unidadeOrigem, unidadeDestino;
 
-    
+   
     printf("Digite o valor: ");
     scanf("%lf", &valor);
 
-    printf("Digite a unidade de origem (m, cm, mm): ");
-    scanf(" %c", &unidadeOrigem);
-
-    printf("Digite a unidade de destino (m, cm, mm): ");
-    scanf(" %c", &unidadeDestino);
+    
+    do {
+        printf("Digite a unidade de origem (m, cm, mm): ");
+        scanf(" %c", &unidadeOrigem);
+        if (!validarUnidade(unidadeOrigem)) {
+            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+        }
+    } while (!validarUnidade(unidadeOrigem));
 
     
+    do {
+        printf("Digite a unidade de destino (m, cm, mm): ");
+        scanf(" %c", &unidadeDestino);
+        if (!validarUnidade(unidadeDestino)) {
+            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+        }
+    } while (!validarUnidade(unidadeDestino));
+
+
     if (unidadeOrigem == 'm') {
         if (unidadeDestino == 'cm') {
-            resultado = valor * 100;  
+            resultado = valor * 100;
         } else if (unidadeDestino == 'mm') {
-            resultado = valor * 1000; 
-        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000;
+        } else {
             resultado = valor; 
         }
-    } else if (unidadeOrigem == 'cm') {
+    } else if (unidadeOrigem == 'c') {
         if (unidadeDestino == 'm') {
-            resultado = valor / 100;  
+            resultado = valor / 100;
         } else if (unidadeDestino == 'mm') {
-            resultado = valor * 10;   
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor; 
+            resultado = valor * 10;
+        } else {
+            resultado = valor;
         }
-    } else if (unidadeOrigem == 'mm') {
+    } else if (unidadeOrigem == 'd') {
         if (unidadeDestino == 'm') {
             resultado = valor / 1000;
-        } else if (unidadeDestino == 'cm') {
-            resultado = valor / 10;   
-        } else if (unidadeDestino == 'mm') {
+        } else if (unidadeDestino == 'c') {
+            resultado = valor / 10;
+        } else {
             resultado = valor; 
         }
-    } else {
-        printf("Unidade de origem inválida!\n");
-        return;
     }
 
      //Exibição do resultado
@@ -132,7 +150,6 @@ void converterVolume() {
         // Exibir o resultado
         printf("Resultado: %.6f\n", resultado);  // Mostrar até 6 casas decimais para maior precisão
 
-    
         // Perguntar se o usuário quer realizar outra conversão com validação de resposta
         do {
             printf("\nDeseja realizar outra conversão de volume? (s - sim, n - não): ");
@@ -144,6 +161,80 @@ void converterVolume() {
 
     } while (continuar == 's' || continuar == 'S');  // Se o usuário escolher 's' ou 'S', o loop continua
 }
+void converterMassa() {
+    double valor, resultado = 0.0;
+    char unidadeOrigem, unidadeDestino;
+
+    printf("Digite o valor: ");
+    scanf("%lf", &valor);
+
+    printf("Digite a unidade de origem (t para toneladas, k para quilogramas, g para gramas, m para miligramas): ");
+    scanf(" %c", &unidadeOrigem);
+
+    printf("Digite a unidade de destino (t para toneladas, k para quilogramas, g para gramas, m para miligramas): ");
+    scanf(" %c", &unidadeDestino);
+
+    if (unidadeOrigem == 't') { // Origem: toneladas
+        if (unidadeDestino == 'k') {
+            resultado = valor * 1000; // t para kg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor * 1000000; // t para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000000000; // t para mg
+        } else if (unidadeDestino == 't') {
+            resultado = valor; // t para t
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'k') { // Origem: quilograma
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000; // kg para t
+        } else if (unidadeDestino == 'g') {
+            resultado = valor * 1000; // kg para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000000; // kg para mg
+        } else if (unidadeDestino == 'k') {
+            resultado = valor; // kg para kg
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'g') { // Origem: gramas
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000000; // g para t
+        } else if (unidadeDestino == 'k') {
+            resultado = valor / 1000; // g para kg
+        } else if (unidadeDestino == 'm') {
+            resultado = valor * 1000; // g para mg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor; // g para g
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else if (unidadeOrigem == 'm') { // Origem: miligrama
+        if (unidadeDestino == 't') {
+            resultado = valor / 1000000000; // mg para t
+        } else if (unidadeDestino == 'k') {
+            resultado = valor / 1000000; // mg para kg
+        } else if (unidadeDestino == 'g') {
+            resultado = valor / 1000; // mg para g
+        } else if (unidadeDestino == 'm') {
+            resultado = valor; // mg para mg
+        } else {
+            printf("Unidade fornecida invalida!\n");
+            return;
+        }
+    } else {
+        printf("Unidade fornecida invalida!\n");
+        return;
+    }
+
+    // Exibi\u00e7\u00e3o do resultado
+    printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
+}
+
 
 void menu()
 {
@@ -210,11 +301,11 @@ char validarCaracter()
     if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
     {
         return input;
-    } 
-    else 
+    }
+    else
     {
         printf("Erro!! \nDigite\n--> ");
-        return validarCaracter();  
+        return validarCaracter();
     }
 }
 // OBS: se for usar as funções validaInteiro e validaCaracter, coloque suas funções daqui para bauo
@@ -232,8 +323,8 @@ void opcaoMenu()
 
         if (opcao < 0 || opcao > 9)
         {
-            system("clear || cls"); // Limpa o terminal
-            menu();                 // Mostra o menu novamente
+            system("clear || cls"); 
+            menu();                 
             printf("Opção inválida. Digite outro número.\n");
         }
         else
@@ -249,7 +340,8 @@ void opcaoMenu()
         break;
 
     case 2:
-        printf("Conversor de massa ainda não implementado.\n");
+        system("clear || cls");
+        converterMassa();
         break;
     case 3:
         system("clear || cls");
@@ -273,7 +365,8 @@ void opcaoMenu()
         break;
 
     case 8:
-        printf("Conversor de tempo ainda não implementado.\n");
+        system("clear || cls");
+        conversorTempo();
         break;
 
     case 9:
@@ -337,4 +430,84 @@ void conversorArea()
     printf("\nPressione Enter para continuar...");
     while (getchar() != '\n');
     getchar();
+}
+
+void conversorTempo() {
+    int opcao, tempo;
+
+    do {
+        printf("\n       Digite um Número Para Escolher a Opção\n");
+        printf("\n***********************************************************************************************\n");
+        printf("| 1 | Converter segundos para minutos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 2 | Converter segundos para horas\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 3 | Converter minutos para segundos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 4 | Converter minutos para horas\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 5 | Converter horas para segundos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 6 | Converter horas para minutos\n");
+        printf("--------------------------------------------------------------------------------------------------\n");
+        printf("| 0 | Sair\n");
+        printf("\n***********************************************************************************************\n");
+
+        opcao = validarInteiro();
+
+        switch (opcao)
+        {
+        case 1:
+            system("clear || cls");
+            printf("Digite o tempo em segundos: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d segundos é igual a %d minutos\n\n", tempo, tempo / 60);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 2:
+            system("clear || cls");
+            printf("Digite o tempo em segundos: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d segundos é igual a %d horas\n\n", tempo, tempo / 3600);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 3:
+            system("clear || cls");
+            printf("Digite o tempo em minutos: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d minutos é igual a %d segundos\n\n", tempo, tempo * 60);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 4:
+            system("clear || cls");
+            printf("Digite o tempo em minutos: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d minutos é igual a %d horas\n\n", tempo, tempo / 60);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 5:
+            system("clear || cls");
+            printf("Digite o tempo em horas: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d horas é igual a %d segundos\n\n", tempo, tempo * 3600);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 6:
+            system("clear || cls");
+            printf("Digite o tempo em horas: ");
+            scanf("%d", &tempo);
+
+            printf("\n%d horas é igual a %d minutos\n\n", tempo, tempo * 60);
+            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        default:
+            printf("\nOpção inválida\n");
+            break;
+        }
+    } while (opcao != 0);
 }
