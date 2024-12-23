@@ -108,7 +108,7 @@ void opcaoMenu()
         break;
 
     case 7:
-        conversorArea(); // Chama a função de conversão de área já estabelecida
+        conversorArea(); // Chama a função de conversão de área
         break;
 
     case 8:
@@ -136,7 +136,7 @@ void opcaoMenu()
 void conversorArea()
 {
     float metrosQuadrados, centimetrosQuadrados;
-    int escolha;
+    int escolha; // Variáveis para área (float) e opção do menu (int).
 
     printf("\n--- Conversor de Unidades de Área ---\n");
     printf("Escolha a conversão:\n");
