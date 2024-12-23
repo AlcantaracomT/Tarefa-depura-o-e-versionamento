@@ -163,9 +163,10 @@ void conversorArea()
         printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
     }
     else if (escolha == 2)
-    {
-        printf("Digite o valor em centímetros quadrados: ");
-        scanf("%f", &centimetrosQuadrados);
+     {
+        do {
+            printf("Digite o valor em centímetros quadrados (não pode ser negativo): ");
+            scanf("%f", &centimetrosQuadrados);
         metrosQuadrados = centimetrosQuadrados / 10000;
         printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
     }
