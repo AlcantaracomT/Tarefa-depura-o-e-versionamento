@@ -108,7 +108,7 @@ void opcaoMenu()
         break;
 
     case 7:
-        conversorArea(); // Chama a função de conversão de área
+        conversorArea(); // Chama a função de conversão de área já estabelecida
         break;
 
     case 8:
