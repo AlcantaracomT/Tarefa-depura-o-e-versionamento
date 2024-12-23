@@ -136,7 +136,7 @@ void opcaoMenu()
 void conversorArea()
 {
     float metrosQuadrados, centimetrosQuadrados;
-    int escolha; // Variáveis para área (float) e opção do menu (int).
+    int escolha; 
 
     printf("\n--- Conversor de Unidades de Área ---\n");
     printf("Escolha a conversão:\n");
@@ -150,7 +150,7 @@ void conversorArea()
         while (getchar() != '\n'); // Limpar buffer
     }
 
-    if (escolha == 1)
+    if (escolha == 1) // Verifica se a opção escolhida é 1.
     {
         printf("Digite o valor em metros quadrados: ");
         scanf("%f", &metrosQuadrados);
