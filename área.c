@@ -150,10 +150,11 @@ void conversorArea()
         while (getchar() != '\n'); // Limpar buffer
     }
 
-    if (escolha == 1) // Verifica se a opção escolhida é 1.
+    if (escolha == 1) 
     {
-        printf("Digite o valor em metros quadrados: ");
-        scanf("%f", &metrosQuadrados);
+         do {
+            printf("Digite o valor em metros quadrados (não pode ser negativo): ");
+            scanf("%f", &metrosQuadrados);
         centimetrosQuadrados = metrosQuadrados * 10000;
         printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
     }
