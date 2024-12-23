@@ -132,7 +132,7 @@ void opcaoMenu()
     }
 }
 
-// Corrigindo para função para conversão de área
+// Corrigindo para função para conversão de área com incremento para número negativo
 void conversorArea()
 {
     float metrosQuadrados, centimetrosQuadrados;
