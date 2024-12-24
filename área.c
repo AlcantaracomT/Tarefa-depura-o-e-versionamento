@@ -187,7 +187,17 @@ void conversorArea()
     float milimetrosQuadrados = metrosQuadrados * 1000000;
     printf("%.2f metros quadrados equivalem a %.2f milímetros quadrados.\n", metrosQuadrados, milimetrosQuadrados);
     }
-    
+    else if (escolha == 4) {
+    do {
+        printf("Digite o valor em metros quadrados (não pode ser negativo): ");
+        scanf("%f", &metrosQuadrados);
+        if (metrosQuadrados < 0)
+            printf("Erro: o valor não pode ser negativo. Tente novamente.\n");
+    } while (metrosQuadrados < 0);
+
+    float hectares = metrosQuadrados / 10000;
+    printf("%.2f metros quadrados equivalem a %.2f hectares.\n", metrosQuadrados, hectares);
+}
     printf("\nPressione Enter para continuar...");
     while (getchar() != '\n');
     getchar();
