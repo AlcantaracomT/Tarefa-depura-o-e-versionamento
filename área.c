@@ -142,6 +142,8 @@ void conversorArea()
     printf("Escolha a conversão:\n");
     printf("1 - Metros quadrados para centímetros quadrados\n");
     printf("2 - Centímetros quadrados para metros quadrados\n");
+    printf("3 - Metros quadrados para milímetros quadrados\n");
+    printf("4 - Metros quadrados para hectares\n");
     printf("--> ");
 
     while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
