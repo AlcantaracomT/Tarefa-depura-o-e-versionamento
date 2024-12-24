@@ -113,6 +113,13 @@ Membros da equipe de desenvolvimento do projeto:
         <p>ML/AI Developer</p>
       </a>
     </td>
+<td align="center"> 
+      <a href="https://github.com/wildinho10">
+        <img src="https://github.com/wildinho10.png" width="100px;" alt="Foto de Wild Freitas no GitHub"/><br>
+        <b>Wild Freitas da Silva Santos</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
       </tr>
 </table>
 
