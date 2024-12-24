@@ -408,7 +408,57 @@ void converterTemperatura()
 
     printf("%.2f %c é igual a %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
+//  Função para converter unidades de velocidade
+void converterVelocidade() {
+    double velocidade, resultado;
+    int opcao;
 
+    do {
+        printf("\nUnidades de Velocidade\n");
+        printf("1. km/h para m/s\n2. km/h para mph\n3. m/s para km/h\n4. m/s para mph\n5. mph para km/h\n6. mph para m/s\n");
+        printf("0. Sair\n");
+
+        printf("\nEscolha uma opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) {
+            printf("Ok, calculo finalizado.\n");
+            break;
+        }
+
+        printf("\nDigite o valor da velocidade: ");
+        scanf("%lf", &velocidade);
+
+        switch (opcao) {
+            case 1:
+                resultado = velocidade / 3.6; // Conversor de km/h para m/s
+                printf("%.2f km/h é igual a %.2f m/s\n", velocidade, resultado);
+                break;
+            case 2:
+                resultado = velocidade / 1.609; // Conversor de km/h para mph
+                printf("%.2f km/h é igual a %.2f mph\n", velocidade, resultado);
+                break;
+            case 3:
+                resultado = velocidade * 3.6; // Conversor de m/s para km/h
+                printf("%.2f m/s é igual a %.2f km/h\n", velocidade, resultado);
+                break;
+            case 4:
+                resultado = velocidade * 2.237; // Conversor de m/s para mph
+                printf("%.2f m/s é igual a %.2f mph\n", velocidade, resultado);
+                break;
+            case 5:
+                resultado = velocidade * 1.609; // Conversor de mph para km/h
+                printf("%.2f mph é igual a %.2f km/h\n", velocidade, resultado);
+                break;
+            case 6:
+                resultado = velocidade / 2.237; // Conversor de mph para m/s
+                printf("%.2f mph é igual a %.2f m/s\n", velocidade, resultado);
+                break;
+            default: // Não vai rodar caso escolha uma opção que não está disponivel 
+                printf("Opção inválida. Tente novamente com outra opção.\n");
+        }
+    } while (opcao != 0);
+}
 void menu()
 {
     printf("\n       Digite um Número Para Escolher a Opção\n");
@@ -526,7 +576,7 @@ void opcaoMenu()
         break;
 
     case 5:
-        printf("Conversor de velocidade ainda não implementado.\n");
+        converterVelocidade();
         break;
 
     case 6:
