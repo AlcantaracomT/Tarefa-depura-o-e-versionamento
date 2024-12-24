@@ -99,10 +99,17 @@ Membros da equipe de desenvolvimento do projeto:
       </a>
     </td>
 
-   <td align="center">
+   <td align="center"> 
       <a href="https://github.com/davi-aguiar">
         <img src="https://github.com/davi-aguiar.png" width="100px;" alt="Foto do Davi no GitHub"/><br>
         <b>Davi Aguiar</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
+<td align="center"> 
+      <a href="https://github.com/KeyllaK">
+        <img src="https://github.com/KeyllaK.png" width="100px;" alt="Foto de Keylla Kaylla no GitHub"/><br>
+        <b>Keylla Kaylla Silva de Oliveira</b>
         <p>ML/AI Developer</p>
       </a>
     </td>
