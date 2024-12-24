@@ -142,8 +142,6 @@ void conversorArea()
     printf("Escolha a conversão:\n");
     printf("1 - Metros quadrados para centímetros quadrados\n");
     printf("2 - Centímetros quadrados para metros quadrados\n");
-    printf("3 - Metros quadrados para milímetros quadrados\n");
-    printf("4 - Metros quadrados para hectares\n");
     printf("--> ");
 
     while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
@@ -176,28 +174,7 @@ void conversorArea()
         metrosQuadrados = centimetrosQuadrados / 10000;
         printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
     }
-    else if (escolha == 3) {
-    do {
-        printf("Digite o valor em metros quadrados (não pode ser negativo): ");
-        scanf("%f", &metrosQuadrados);
-        if (metrosQuadrados < 0)
-            printf("Erro: o valor não pode ser negativo. Tente novamente.\n");
-    } while (metrosQuadrados < 0);
 
-    float milimetrosQuadrados = metrosQuadrados * 1000000;
-    printf("%.2f metros quadrados equivalem a %.2f milímetros quadrados.\n", metrosQuadrados, milimetrosQuadrados);
-    }
-    else if (escolha == 4) {
-    do {
-        printf("Digite o valor em metros quadrados (não pode ser negativo): ");
-        scanf("%f", &metrosQuadrados);
-        if (metrosQuadrados < 0)
-            printf("Erro: o valor não pode ser negativo. Tente novamente.\n");
-    } while (metrosQuadrados < 0);
-
-    float hectares = metrosQuadrados / 10000;
-    printf("%.2f metros quadrados equivalem a %.2f hectares.\n", metrosQuadrados, hectares);
-}
     printf("\nPressione Enter para continuar...");
     while (getchar() != '\n');
     getchar();
