@@ -459,6 +459,87 @@ void converterVelocidade() {
         }
     } while (opcao != 0);
 }
+void converter_potencia()
+{
+    double valor, resultado = 0.0;
+    char unidadeOrigem, unidadeDestino;
+
+    printf("\n--- Conversor de Unidades de Potencia ---\n"); // Menu inicial
+
+    printf("Digite a unidade de origem (W para Watts, K para quiloWatts e C para cavalo a vapor): "); // Menu para determinação da unidade de origem
+    scanf(" %c", &unidadeOrigem); // ler a unidade correspondente a unidade de origem
+
+    printf("Digite o valor da Potencia: "); // Menu para digitação do valor original
+    scanf("%lf", &valor); // leitura do valor original da potência
+
+    printf("Digite a unidade de destino (W para Watts, K para quiloWatts e C para cavalo-vapor): ");// Menu para determinação da unidade de destino
+    scanf(" %c", &unidadeDestino);// ler a unidade correspondente a unidade de destino
+
+    if (unidadeOrigem == 'W' || unidadeOrigem == 'w') // Verificando se foi selecionado Watts na unidade origem
+    {
+        if (unidadeDestino == 'K' || unidadeDestino == 'k') // Verificando se foi selecionado quiloWatts para unidade destino
+        {
+            resultado = valor/1000; // Convertendo Watts para quiloWatts
+        }
+        else if (unidadeDestino == 'C' || unidadeDestino == 'c') //Verificando se foi selecionado cavalo-vapor para unidade destino
+        {
+            resultado = valor/735.5; // Convertendo Watts para cavalo-vapor
+        }
+        else if (unidadeDestino == 'W' || unidadeDestino == 'w') //Verificando se foi selecionado Watts para unidade destino
+        {
+            resultado = valor; //Mantendo mesmo valor, sem conversão necessária
+        }
+        else{
+            printf("Error! Unidade não encontrada!"); // Sem unidade de destino correspondente
+            return;
+        }
+    }
+    else if (unidadeOrigem == 'K' || unidadeOrigem == 'k') // Verificando se foi selecionado quiloWatts na unidade origem
+    {
+        if (unidadeDestino == 'W' || unidadeDestino == 'w') // Verificando se foi selecionado Watts para unidade destino
+        {
+            resultado = valor * 1000; // Convertendo quiloWatts para Watts
+        }
+        else if (unidadeDestino == 'C' || unidadeDestino == 'c') // Verificando se foi selecionado cavalo-vapor para unidade destino
+        {
+            resultado = valor / 1000 / 735.5; // Convertendo quiloWatts para cavalo-vapor
+        }
+        else if (unidadeDestino == 'K' || unidadeDestino == 'k') //Verificando se foi selecionado quiloWatts para unidade destino
+        {
+            resultado = valor; //Mantendo mesmo valor, sem conversão necessária
+        }
+         else{
+            printf("Error! Unidade não encontrada!"); // Sem unidade de destino correspondente
+            return;
+        }
+    }
+    else if (unidadeOrigem == 'C' || unidadeOrigem == 'c') // Verificando se foi selecionado cavalo-vapor na unidade origem
+    {
+        if (unidadeDestino == 'W' || unidadeDestino == 'w')//Verificando se foi selecionado Watts para unidade destino
+        {
+            resultado = valor*735.5; // Convertendo cavalo-vapor para Watts
+        }
+        else if (unidadeDestino == 'K' || unidadeDestino == 'k') //Verificando se foi selecionado quiloWatts para unidade destino
+        {
+            resultado = valor*735.5/1000; // Convertendo cavalo-vapor para quiloWatts
+        }
+        else if (unidadeDestino == 'C' || unidadeDestino == 'c') //Verificando se foi selecionado cavalo-vapor para unidade destino
+        {
+            resultado = valor; //Mantendo mesmo valor, sem conversão necessária
+        }
+        else{
+            printf("Error! Unidade não encontrada!"); // Sem unidade de destino correspondente
+            return;
+        }
+    }
+    else
+    {
+        printf("Unidade de origem inválida.\n"); // Sem unidade de destino correspondente
+        return;
+    }
+
+    printf("%.2f %c é igual a %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino); //Escrevendo o valor de origem e destino
+}
 void menu()
 {
     printf("\n       Digite um Número Para Escolher a Opção\n");
@@ -580,7 +661,7 @@ void opcaoMenu()
         break;
 
     case 6:
-        printf("Conversor de potência ainda não implementado.\n");
+        converter_potencia();
         break;
 
     case 7:
