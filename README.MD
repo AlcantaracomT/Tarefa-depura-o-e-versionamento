@@ -116,6 +116,8 @@ Membros da equipe de desenvolvimento do projeto:
         <p>ML/AI Developer</p>
       </a>
     </td>
+  </tr>
+  <tr>
     <td align="center"> 
       <a href="https://github.com/EriclesBSa">
         <img src="https://github.com/EriclesBSa.png" width="100px;" alt="Foto de Ericles Barros de Sá no GitHub"/><br>
@@ -123,7 +125,29 @@ Membros da equipe de desenvolvimento do projeto:
         <p>Estudante de Engenharia da Computação</p>
       </a>
     </td>
+    <td align="center"> 
+      <a href="https://github.com/AlcantaracomT">
+        <img src="https://github.com/AlcantaracomT.png" width="100px;" alt="Foto de Tiago Alcantara no GitHub"/><br>
+        <b>Tiago Alcantara</b>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/AiltonGabriel70">
+        <img src="https://github.com/AiltonGabriel70.png" width="100px;" alt="Foto de Ailton Gabriel no GitHub"/><br>
+        <b>Ailton Gabriel</b>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/PedroLSena">
+        <img src="https://github.com/PedroLSena.png" width="100px;" alt="Foto de Pedro Sena no GitHub"/><br>
+        <b>Pedro Sena</b>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/bellasanva">
+        <img src="https://github.com/bellasanva.png" width="100px;" alt="Foto de Isabela Santos no GitHub"/><br>
+        <b>Isabela Santos</b>
+      </a>
+    </td>
   </tr>
 </table>
-
-[⬆ Voltar ao topo](#topo)
