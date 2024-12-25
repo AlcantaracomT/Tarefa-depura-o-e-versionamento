@@ -1,16 +1,210 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 
-int validarUnidade(char unidade)
-{
-    unidade = tolower(unidade);
-    return (unidade == 'm' || unidade == 'c' || unidade == 'd');
-}
 
+void menu();
+int validarInteiro();
+void opcaoMenu();
+void converterComprimento();
+void converterMassa();
+void converterVolume();
+void converterTemperatura();
+void converterVelocidade();
+void converterVelocidade();
+void converter_potencia();
 void conversorArea();
 void conversorTempo();
+void menuUidade();
+double convertUnidade(double valor, int daUnidade, int paraUnidade);
 
+
+
+// Função principal
+int main()
+{
+    menu();      // Mostrar menu
+    opcaoMenu(); // Escolha da função do menu
+    return 0;
+}
+
+
+//Função para mostrar as opções do menu
+void menu()
+{
+    printf("\n       Digite um Número Para Escolher a Opção\n");
+    printf("\n***********************************************************************************************\n");
+    printf("| 1 | Converter Unidades de comprimento (metro, centímetro, milímetro)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 2 | Converter Unidades de massa (quilograma, grama, tonelada)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 3 | Converter Unidades de volume (litro, mililitro, metros cúbicos)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 4 | Converter Unidades de temperatura (Celsius, Fahrenheit, Kelvin)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 5 | Converter Unidades de velocidade (km/h, m/s, mph)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 6 | Converter Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 7 | Converter Unidades de área (metro quadrado, centímetro quadrado)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 8 | Converter Unidades de Unidades de tempo (segundos, minutos, horas)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 9 | Converter Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB)\n");
+    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("| 0 | Sair\n");
+    printf("\n***********************************************************************************************\n");
+}
+
+// Função para entrar na opção escolhida no menu
+void opcaoMenu()
+{
+    int opcao;
+    do
+    {
+        menu(); // Mostrar o menu a cada iteração
+        opcao = validarInteiro();
+
+        if (opcao < 0 || opcao > 9)
+        {
+            printf("Opção inválida. Tente novamente.\n");
+            continue; // Voltar ao início do loop
+        }
+
+        system("clear || cls"); // Limpar a tela antes de chamar a função correspondente
+
+        switch (opcao)
+        {
+        case 1:
+            converterComprimento();
+            break;
+        case 2:
+            converterMassa();
+            break;
+        case 3:
+            converterVolume();
+            break;
+        case 4:
+            converterTemperatura();
+            break;
+        case 5:
+            converterVelocidade();
+            break;
+        case 6:
+            converter_potencia();
+            break;
+        case 7:
+            conversorArea();
+            break;
+        case 8:
+            conversorTempo();
+            break;
+        case 9:
+            int daUnidade, paraUnidade;
+            double valor, resultado;
+            char repeat;
+
+            do {
+                printf("\n-------CONVERSOR DE UNIDADES DIGITAIS-------\n\n");
+
+                do {
+                    menuUidade();
+                    printf("\nDigite o numero correspondente a unidade de origem: "); // escolhendo a unidade de origem
+                    scanf("%d", &daUnidade);
+
+                    if (daUnidade < 1 || daUnidade > 6) {
+                        char tryAgain[4];
+                        printf("Unidade de origem invalida. Deseja tentar de novo? (S/N): ");
+                        scanf(" %3s", tryAgain);
+
+                        if (tryAgain[0] == 'N' || tryAgain[0] == 'n') {
+                            printf("\nObrigado por usar o conversor de unidades!\n");
+                            break;
+                        }
+                    }
+                } while (daUnidade < 1 || daUnidade > 6);
+
+                
+                printf("Digite o valor a ser convertido: ");    // inserindo o valor a ser convertido
+                scanf("%lf", &valor);
+
+                
+                do {
+                    menuUidade();  // Aqui você corrigiu a chamada de 'print_menu()' para 'menu()'
+                    printf("\nDigite o numero correspondente a unidade de destino: ");  // Escolhendo a unidade a ser convertida
+                    scanf("%d", &paraUnidade);
+
+                    if (paraUnidade < 1 || paraUnidade > 6) {
+                        char tryAgain[4];
+                        printf("Unidade de destino invalida. Deseja tentar de novo? (S/N): ");
+                        scanf(" %3s", tryAgain);
+
+                        if (tryAgain[0] == 'N' || tryAgain[0] == 'n') {
+                            printf("\nObrigado por usar o conversor de unidades!\n");
+                            break;
+                        }
+                    }
+                } while (paraUnidade < 1 || paraUnidade > 6);
+
+            
+                resultado = convertUnidade(valor, daUnidade, paraUnidade);
+
+                printf("\nResultado: %.6lf\n", resultado);
+
+                printf("\nDeseja fazer outra conversao? (S/N): ");
+                scanf(" %c", &repeat);
+
+            } while (repeat == 'S' || repeat == 's');
+            break;
+        case 0:
+            printf("\nSaindo do programa. Obrigado!\n");
+            return; // Sair do programa
+        default:
+            printf("Opção inválida.\n");
+            break;
+        }
+
+        printf("\nPressione Enter para voltar ao menu...");
+        getchar(); // Aguardar entrada
+        getchar(); // Garantir que o buffer foi limpo
+    } while (1); 
+}
+
+
+
+/* Função para validar a entrada de inteiros do usuário
+   recebe uma entrada e valida caso seja um numero inteiro
+*/
+int validarInteiro()
+{
+    int opcao = 0;
+
+    printf("\n--> ");
+
+    while (scanf("%d", &opcao) != 1) // Verificar se é um número inteiro
+    {
+        system("clear || cls"); // Limpa o terminal
+        menu();
+        printf("Erro!! \nDigite um número\n--> ");
+        while (getchar() != '\n')
+            ; // Limpar buffer do teclado
+    }
+
+    return opcao;
+}
+
+
+
+//Validar na função de comprimento
+int validarUnidade(char unidade)
+{
+    //unidade = tolower(unidade);
+    return (unidade == 'M' || unidade == 'c' || unidade == 'm');
+}
+
+
+//Função para converter Comprimento
 void converterComprimento()
 {
     double valor, resultado = 0.0;
@@ -21,31 +215,39 @@ void converterComprimento()
 
     do
     {
-        printf("Digite a unidade de origem (m, cm, mm): ");
+        printf("Digite a unidade de destino: \n");
+        printf("M para Metro\n");
+        printf("c para Centimetro\n");
+        printf("m para milimetro\n");
+        printf("Digite a unidade de destino: (M, c, m)\n");
         scanf(" %c", &unidadeOrigem);
         if (!validarUnidade(unidadeOrigem))
         {
-            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+            printf("Unidade inválida. Use apenas 'M', 'c' ou 'm'.\n");
         }
     } while (!validarUnidade(unidadeOrigem));
 
     do
     {
-        printf("Digite a unidade de destino (m, cm, mm): ");
+        printf("Digite a unidade de destino: \n");
+        printf("M para Metro\n");
+        printf("c para Centimetro\n");
+        printf("m para milimetro\n");
+        printf("Digite a unidade de destino: (M, c, m)\n");
         scanf(" %c", &unidadeDestino);
         if (!validarUnidade(unidadeDestino))
         {
-            printf("Unidade inválida. Use apenas 'm', 'cm' ou 'mm'.\n");
+            printf("Unidade inválida. Use apenas 'M', 'c' ou 'm'.\n");
         }
     } while (!validarUnidade(unidadeDestino));
 
-    if (unidadeOrigem == 'm')
+    if (unidadeOrigem == 'M')
     {
-        if (unidadeDestino == 'cm')
+        if (unidadeDestino == 'c')
         {
             resultado = valor * 100;
         }
-        else if (unidadeDestino == 'mm')
+        else if (unidadeDestino == 'm')
         {
             resultado = valor * 1000;
         }
@@ -56,11 +258,11 @@ void converterComprimento()
     }
     else if (unidadeOrigem == 'c')
     {
-        if (unidadeDestino == 'm')
+        if (unidadeDestino == 'M')
         {
             resultado = valor / 100;
         }
-        else if (unidadeDestino == 'mm')
+        else if (unidadeDestino == 'm')
         {
             resultado = valor * 10;
         }
@@ -69,9 +271,9 @@ void converterComprimento()
             resultado = valor;
         }
     }
-    else if (unidadeOrigem == 'd')
+    else if (unidadeOrigem == 'm')
     {
-        if (unidadeDestino == 'm')
+        if (unidadeDestino == 'M')
         {
             resultado = valor / 1000;
         }
@@ -88,13 +290,19 @@ void converterComprimento()
     // Exibição do resultado
     printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
+
+
+
+//Limpar o buffer do teclado
 void limparBuffer()
 {
     while (getchar() != '\n')
         ; // Limpar o buffer de entrada
 }
 
-// ConverterVolume
+
+
+// função para Converter Volume
 void converterVolume()
 {
     float valor, resultado;
@@ -219,6 +427,10 @@ void converterVolume()
 
     } while (continuar == 's' || continuar == 'S'); // Se o usuário escolher 's' ou 'S', o loop continua
 }
+
+
+
+//Função para conversão de Massa
 void converterMassa()
 {
     double valor, resultado = 0.0;
@@ -339,6 +551,9 @@ void converterMassa()
     printf("%.2f %c = %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
 
+
+
+//Função para conversão de Temperatura
 void converterTemperatura()
 {
     double valor, resultado = 0.0;
@@ -408,16 +623,16 @@ void converterTemperatura()
 
     printf("%.2f %c é igual a %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino);
 }
-//  Função para converter unidades de velocidade
+
+
+//Função para converte velocidade
 void converterVelocidade() {
     double velocidade, resultado;
     int opcao;
-
     do {
         printf("\nUnidades de Velocidade\n");
         printf("1. km/h para m/s\n2. km/h para mph\n3. m/s para km/h\n4. m/s para mph\n5. mph para km/h\n6. mph para m/s\n");
         printf("0. Sair\n");
-
         printf("\nEscolha uma opção: ");
         scanf("%d", &opcao);
 
@@ -425,10 +640,8 @@ void converterVelocidade() {
             printf("Ok, calculo finalizado.\n");
             break;
         }
-
         printf("\nDigite o valor da velocidade: ");
         scanf("%lf", &velocidade);
-
         switch (opcao) {
             case 1:
                 resultado = velocidade / 3.6; // Conversor de km/h para m/s
@@ -459,22 +672,56 @@ void converterVelocidade() {
         }
     } while (opcao != 0);
 }
+
+
+
+// Função para conversão de área
+void conversorArea()
+{
+    float metrosQuadrados, centimetrosQuadrados;
+    int escolha;
+
+    printf("\n--- Conversor de Unidades de Área ---\n");
+    printf("Escolha a conversão:\n");
+    printf("1 - Metros quadrados para centímetros quadrados\n");
+    printf("2 - Centímetros quadrados para metros quadrados\n");
+    printf("--> ");
+
+    while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
+    {
+        printf("Opção inválida. Tente novamente:\n--> ");
+        while (getchar() != '\n')
+            ; // Limpar buffer
+    }
+
+    if (escolha == 1)
+    {
+        printf("Digite o valor em metros quadrados: ");
+        scanf("%f", &metrosQuadrados);
+        centimetrosQuadrados = metrosQuadrados * 10000;
+        printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
+    }
+    else if (escolha == 2)
+    {
+        printf("Digite o valor em centímetros quadrados: ");
+        scanf("%f", &centimetrosQuadrados);
+        metrosQuadrados = centimetrosQuadrados / 10000;
+        printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
+    }
+}
+
+
 void converter_potencia()
 {
     double valor, resultado = 0.0;
     char unidadeOrigem, unidadeDestino;
-
     printf("\n--- Conversor de Unidades de Potencia ---\n"); // Menu inicial
-
     printf("Digite a unidade de origem (W para Watts, K para quiloWatts e C para cavalo a vapor): "); // Menu para determinação da unidade de origem
     scanf(" %c", &unidadeOrigem); // ler a unidade correspondente a unidade de origem
-
     printf("Digite o valor da Potencia: "); // Menu para digitação do valor original
     scanf("%lf", &valor); // leitura do valor original da potência
-
     printf("Digite a unidade de destino (W para Watts, K para quiloWatts e C para cavalo-vapor): ");// Menu para determinação da unidade de destino
     scanf(" %c", &unidadeDestino);// ler a unidade correspondente a unidade de destino
-
     if (unidadeOrigem == 'W' || unidadeOrigem == 'w') // Verificando se foi selecionado Watts na unidade origem
     {
         if (unidadeDestino == 'K' || unidadeDestino == 'k') // Verificando se foi selecionado quiloWatts para unidade destino
@@ -537,207 +784,11 @@ void converter_potencia()
         printf("Unidade de origem inválida.\n"); // Sem unidade de destino correspondente
         return;
     }
-
     printf("%.2f %c é igual a %.2f %c\n", valor, unidadeOrigem, resultado, unidadeDestino); //Escrevendo o valor de origem e destino
 }
-void menu()
-{
-    printf("\n       Digite um Número Para Escolher a Opção\n");
-    printf("\n***********************************************************************************************\n");
-    printf("| 1 | Converter Unidades de comprimento (metro, centímetro, milímetro)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 2 | Converter Unidades de massa (quilograma, grama, tonelada)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 3 | Converter Unidades de volume (litro, mililitro, metros cúbicos)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 4 | Converter Unidades de temperatura (Celsius, Fahrenheit, Kelvin)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 5 | Converter Unidades de velocidade (km/h, m/s, mph)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 6 | Converter Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 7 | Converter Unidades de área (metro quadrado, centímetro quadrado)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 8 | Converter Unidades de Unidades de tempo (segundos, minutos, horas)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 9 | Converter Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB)\n");
-    printf("--------------------------------------------------------------------------------------------------\n");
-    printf("| 0 | Sair\n");
-    printf("\n***********************************************************************************************\n");
-}
 
-/* Função para validar a entrada de inteiros do usuário
-   recebe uma entrada e valida caso seja um numero inteiro
-*/
-int validarInteiro()
-{
-    int opcao = 0;
 
-    printf("\n--> ");
-
-    while (scanf("%d", &opcao) != 1) // Verificar se é um número inteiro
-    {
-        system("clear || cls"); // Limpa o terminal
-        menu();
-        printf("Erro!! \nDigite um número\n--> ");
-        while (getchar() != '\n')
-            ; // Limpar buffer do teclado
-    }
-
-    return opcao;
-}
-
-/* Função para validar a entrada de caracteres do usuário
-    recebe uma entrada e valida caso seja um caracter alfabetico.
-*/
-char validarCaracter()
-{
-    char input;
-
-    printf("\n--> ");
-
-    while (getchar() != '\n')
-        ; // Limpa o buffer
-
-    scanf("%c", &input);
-
-    // Verificar se o caractere esta entra (a-z ou A-Z)
-    if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
-    {
-        return input;
-    }
-    else
-    {
-        printf("Erro!! \nDigite\n--> ");
-        return validarCaracter();
-    }
-}
-// OBS: se for usar as funções validaInteiro e validaCaracter, coloque suas funções daqui para bauo
-
-// Função para entrar na opção escolhida
-void opcaoMenu()
-{
-    int opcao;
-    int valido = 0;
-
-    do
-    {
-        opcao = validarInteiro();
-
-        if (opcao < 0 || opcao > 9)
-        {
-            system("clear || cls");
-            menu();
-            printf("Opção inválida. Digite outro número.\n");
-        }
-        else
-            valido = 1;
-
-    } while (valido != 1);
-
-    switch (opcao)
-    {
-    case 1:
-        system("clear || cls");
-        converterComprimento();
-        break;
-
-    case 2:
-        system("clear || cls");
-        converterMassa();
-        break;
-    case 3:
-        system("clear || cls");
-        converterVolume();
-        break;
-
-    case 4:
-        system("clear || cls");
-        converterTemperatura();
-        break;
-
-    case 5:
-        converterVelocidade();
-        break;
-
-    case 6:
-        converter_potencia();
-        break;
-
-    case 7:
-        conversorArea(); // Chama a função de conversão de área
-        break;
-
-    case 8:
-        system("clear || cls");
-        conversorTempo();
-        break;
-
-    case 9:
-        printf("Conversor de dados ainda não implementado.\n");
-        break;
-
-    case 0:
-        system("clear || cls"); // Limpa o terminal
-        printf("\n******************\n");
-        printf("\nFim do Programa\n");
-        printf("\n******************\n");
-        break;
-
-    default:
-        printf("\nOpção inválida\n");
-        break;
-    }
-}
-
-// Função principal
-int main()
-{
-    menu();      // Mostrar menu
-    opcaoMenu(); // Escolha da função do menu
-    return 0;
-}
-
-// Função para conversão de área
-void conversorArea()
-{
-    float metrosQuadrados, centimetrosQuadrados;
-    int escolha;
-
-    printf("\n--- Conversor de Unidades de Área ---\n");
-    printf("Escolha a conversão:\n");
-    printf("1 - Metros quadrados para centímetros quadrados\n");
-    printf("2 - Centímetros quadrados para metros quadrados\n");
-    printf("--> ");
-
-    while (scanf("%d", &escolha) != 1 || (escolha < 1 || escolha > 2))
-    {
-        printf("Opção inválida. Tente novamente:\n--> ");
-        while (getchar() != '\n')
-            ; // Limpar buffer
-    }
-
-    if (escolha == 1)
-    {
-        printf("Digite o valor em metros quadrados: ");
-        scanf("%f", &metrosQuadrados);
-        centimetrosQuadrados = metrosQuadrados * 10000;
-        printf("%.2f metros quadrados equivalem a %.2f centímetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
-    }
-    else if (escolha == 2)
-    {
-        printf("Digite o valor em centímetros quadrados: ");
-        scanf("%f", &centimetrosQuadrados);
-        metrosQuadrados = centimetrosQuadrados / 10000;
-        printf("%.2f centímetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
-    }
-
-    printf("\nPressione Enter para continuar...");
-    while (getchar() != '\n')
-        ;
-    getchar();
-}
-
+//Função para conversão de Tempo
 void conversorTempo()
 {
     int opcao, tempo;
@@ -771,7 +822,6 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d segundos é igual a %d minutos\n\n", tempo, tempo / 60);
-            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 2:
             system("clear || cls");
@@ -779,7 +829,6 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d segundos é igual a %d horas\n\n", tempo, tempo / 3600);
-            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 3:
             system("clear || cls");
@@ -787,7 +836,6 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d minutos é igual a %d segundos\n\n", tempo, tempo * 60);
-            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 4:
             system("clear || cls");
@@ -795,7 +843,6 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d minutos é igual a %d horas\n\n", tempo, tempo / 60);
-            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 5:
             system("clear || cls");
@@ -803,7 +850,6 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d horas é igual a %d segundos\n\n", tempo, tempo * 3600);
-            system("read -p 'Pressione Enter para continuar...' var");
             break;
         case 6:
             system("clear || cls");
@@ -811,11 +857,41 @@ void conversorTempo()
             scanf("%d", &tempo);
 
             printf("\n%d horas é igual a %d minutos\n\n", tempo, tempo * 60);
-            system("read -p 'Pressione Enter para continuar...' var");
+            break;
+        case 0:
             break;
         default:
             printf("\nOpção inválida\n");
             break;
         }
     } while (opcao != 0);
+}
+
+
+
+ // Menu com as opções de conversão de unidade
+void menuUidade() {
+    const char *opcoes[] = {
+        "Bits",
+        "Bytes",
+        "Kilobytes (KB)",
+        "Megabytes (MB)",
+        "Gigabytes (GB)",
+        "Terabytes (TB)"
+    };
+
+    printf("Escolha a unidade de origem:\n");
+    for (int i = 0; i < 6; i++) {
+        printf("%d. %s\n", i + 1, opcoes[i]);
+    }
+}
+
+
+//Função para conversão de Unidade
+double convertUnidade(double valor, int daUnidade, int paraUnidade) {
+    double fatores[] = {1.0 / 8.0, 1.0, 1024.0, pow(1024, 2), pow(1024, 3), pow(1024, 4)}; // Tabela de fatores de conversao em relacao a bytes
+
+    double valorBytes = valor * fatores[daUnidade - 1]; // Convertendo para bytes primeiro
+
+    return valorBytes / fatores[paraUnidade - 1]; // Converter de bytes para a unidade de destino
 }
