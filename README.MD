@@ -82,45 +82,48 @@ Membros da equipe de desenvolvimento do projeto:
 <table>
   <tr>
     <td align="center">
-<<<<<<< HEAD
-=======
       <a href="https://github.com/matheusssilva991">
-        <img src="https://github.com/matheusssilva991.png " width="100px;" alt="Foto de Matheus Santos silva no GitHub"/><br>
+        <img src="https://github.com/matheusssilva991.png" width="100px;" alt="Foto de Matheus Santos Silva no GitHub"/><br>
         <b>Matheus Santos Silva (matheusssilva991)</b>
         <p>Desenvolvedor Back-end - NestJS</p>
       </a>
     </td>
     <td align="center">
->>>>>>> tempoM
       <a href="https://github.com/suianialmeida">
-        <img src="https://github.com/suianialmeida.png " width="100px;" alt="Foto de Suiani Almeida no GitHub"/><br>
+        <img src="https://github.com/suianialmeida.png" width="100px;" alt="Foto de Suiani Almeida no GitHub"/><br>
         <b>Suiani Almeida</b>
         <p>Desenvolvedora em Sistemas Embarcados e IoT</p>
       </a>
     </td>
-
-   <td align="center"> 
+    <td align="center"> 
       <a href="https://github.com/davi-aguiar">
         <img src="https://github.com/davi-aguiar.png" width="100px;" alt="Foto do Davi no GitHub"/><br>
         <b>Davi Aguiar</b>
         <p>ML/AI Developer</p>
       </a>
     </td>
-<td align="center"> 
+    <td align="center"> 
       <a href="https://github.com/KeyllaK">
         <img src="https://github.com/KeyllaK.png" width="100px;" alt="Foto de Keylla Kaylla no GitHub"/><br>
         <b>Keylla Kaylla Silva de Oliveira</b>
         <p>ML/AI Developer</p>
       </a>
     </td>
-<td align="center"> 
+    <td align="center"> 
       <a href="https://github.com/wildinho10">
         <img src="https://github.com/wildinho10.png" width="100px;" alt="Foto de Wild Freitas no GitHub"/><br>
         <b>Wild Freitas da Silva Santos</b>
         <p>ML/AI Developer</p>
       </a>
     </td>
-      </tr>
+    <td align="center"> 
+      <a href="https://github.com/EriclesBSa">
+        <img src="https://github.com/EriclesBSa.png" width="100px;" alt="Foto de Ericles Barros de Sá no GitHub"/><br>
+        <b>Éricles Barros de Sá</b>
+        <p>Estudante de Engenharia da Computação</p>
+      </a>
+    </td>
+  </tr>
 </table>
 
 [⬆ Voltar ao topo](#topo)
