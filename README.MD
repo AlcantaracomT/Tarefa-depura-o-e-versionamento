@@ -1,84 +1,145 @@
-# Programa Conversor de Unidades em C
+# 📏 Programa Conversor de Unidades em C
 
-Este projeto é um programa de conversão de unidades desenvolvido em linguagem C, que permite realizar diferentes tipos de conversões de medidas.
-
-## 👥 Estrutura da Equipe
-
-- 1 Líder de Equipe (Gerente do Repositório)
-- Até 9 Desenvolvedores (cada um com uma tarefa específica)
+Um programa desenvolvido em linguagem C para realizar diversas conversões de unidades.
 
 ## 🛠️ Funcionalidades
 
-O programa inclui as seguintes conversões:
+O programa oferece suporte às seguintes conversões:
 
-1. Unidades de comprimento (metro, centímetro, milímetro)
-2. Unidades de massa (quilograma, grama, tonelada)
-3. Unidades de volume (litro, mililitro, metros cúbicos)
-4. Unidades de temperatura (Celsius, Fahrenheit, Kelvin)
-5. Unidades de velocidade (km/h, m/s, mph)
-6. Potência (Watts, quilowatts, cavalos-vapor)
-7. Unidades de área (metro quadrado, centímetro quadrado)
-8. Unidades de tempo (segundos, minutos, horas)
-9. Unidades digitais (bits, bytes, KB, MB, GB, TB)
-10. Interface de usuário
-11. Testes e depuração
+### 🔹 Comprimento
+- Metro, centímetro, milímetro.
+
+### 🔹 Massa
+- Quilograma, grama, tonelada.
+
+### 🔹 Volume
+- Litro, mililitro, metros cúbicos.
+
+### 🔹 Temperatura
+- Celsius, Fahrenheit, Kelvin.
+
+### 🔹 Velocidade
+- Km/h, m/s, mph.
+
+### 🔹 Potência
+- Watts, quilowatts, cavalos-vapor.
+
+### 🔹 Área
+- Metro quadrado, centímetro quadrado.
+
+### 🔹 Tempo
+- Segundos, minutos, horas.
+
+### 🔹 Dados digitais
+- Bits, bytes, KB, MB, GB, TB.
+
+---
 
 ## 🚀 Como Usar
 
-1. Clone o repositório
-2. Compile o programa usando um compilador C
-3. Execute o programa
-4. Selecione o tipo de conversão desejada
-5. Insira o valor a ser convertido
-6. Obtenha o resultado
+1. **Clone o Repositório**  
+   ```bash
+   git clone https://github.com/seu-usuario/conversor-unidades.git
+   cd conversor-unidades
+   ```
+
+2. **Compile o Programa**  
+   Use um compilador C, como `gcc`:  
+   ```bash
+   gcc main.c -o conversor
+   ```
+
+3. **Execute o Programa**  
+   ```bash
+   ./conversor
+   ```
+
+4. **Selecione a Conversão Desejada**  
+   Siga as instruções no terminal.
+
+5. **Insira o Valor**  
+   Informe o valor que deseja converter.
+
+6. **Obtenha o Resultado**  
+   O programa exibirá o valor convertido.
+
+---
 
 ## 💻 Desenvolvimento
 
 ### Configuração Inicial
 
-1. Criar conta no GitHub
-2. Configurar Git no VSCode (nome, e-mail)
-3. Clonar o repositório
+1. **Criar Conta no GitHub**  
+   Se ainda não tiver, registre-se em [GitHub](https://github.com/).
+
+2. **Configurar Git no VSCode**  
+   Configure seu nome e e-mail para o controle de versões:  
+   ```bash
+   git config --global user.name "Seu Nome"
+   git config --global user.email "seuemail@exemplo.com"
+   ```
+
+3. **Clone o Repositório**  
+   ```bash
+   git clone https://github.com/seu-usuario/conversor-unidades.git
+   ```
 
 ### Fluxo de Trabalho
 
-1. Criar branch para sua feature (ex: feature/comprimento)
-2. Desenvolver a funcionalidade designada
-3. Fazer commits regulares com mensagens descritivas
-4. Criar pull request
-5. Aguardar revisão do líder
+1. **Crie uma Branch**  
+   ```bash
+   git checkout -b feature/nome-da-feature
+   ```
 
-### Boas Práticas
+2. **Implemente Sua Funcionalidade**  
+   Desenvolva o código necessário para a tarefa atribuída.
 
-- Manter código documentado
-- Seguir padrões de codificação
-- Testar funcionalidades antes do commit
-- Resolver conflitos quando necessário
+3. **Faça Commits Regularmente**  
+   Use mensagens descritivas:  
+   ```bash
+   git commit -m "Adiciona suporte a conversão de temperatura"
+   ```
 
-## 🧪 Testes
+4. **Submeta Suas Mudanças**  
+   ```bash
+   git push origin feature/nome-da-feature
+   ```
 
-- Cada desenvolvedor deve testar sua funcionalidade
-- Testes integrados serão realizados após merge
-- Validação final com toda a equipe
+5. **Crie um Pull Request**  
+   No GitHub, solicite a revisão do código pelo líder.
+
+---
 
 ## 📝 Contribuição
 
-1. Faça um Fork do projeto
-2. Crie sua Feature Branch (git checkout -b feature/NovaFuncionalidade)
-3. Commit suas mudanças (git commit -m 'Adicionando nova funcionalidade')
-4. Push para a Branch (git push origin feature/NovaFuncionalidade)
-5. Abra um Pull Request
+Contribuições são sempre bem-vindas! Siga os passos abaixo para participar:
 
-## ✅ Status do Projeto
+1. **Faça um Fork do Repositório**  
+   Clique no botão "Fork" na página do projeto no GitHub.
 
-Em desenvolvimento
+2. **Crie uma Nova Branch**  
+   ```bash
+   git checkout -b feature/sua-nova-funcionalidade
+   ```
+
+3. **Implemente as Mudanças**  
+   Edite o código e faça commits regularmente.
+
+4. **Envie as Mudanças**  
+   ```bash
+   git push origin feature/sua-nova-funcionalidade
+   ```
+
+5. **Abra um Pull Request**  
+   Descreva suas alterações e aguarde a revisão.
 
 ---
+
+Qualquer dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato.
 
 ## 🤝 Equipe
 
 Membros da equipe de desenvolvimento do projeto:
-
 <table>
   <tr>
     <td align="center">
